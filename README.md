@@ -41,8 +41,8 @@ $ export LLVM_INSTALL_DIR=/usr/llvm
 ###  Create your build output directory
 
 ```
-$ mkdir ~/hvsrc/qt_lgpl/5.15.1
-$ cd ~/hvsrc/qt_lgpl/5.15.1
+$ mkdir ~/hvsrc/qt_lgpl/5.15.1/dev
+$ cd ~/hvsrc/qt_lgpl/5.15.1/dev
 $ ~/hvsrc/qt5/configure -developer-build -opensource -nomake examples -nomake tests -confirm-license
 ```
 
