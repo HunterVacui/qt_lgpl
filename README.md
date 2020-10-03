@@ -26,9 +26,8 @@ $ git checkout 5.15.1
 $ perl init-repository --module-subset=default,-qtwebengine
 ```
 
-## Build DLLs
+## Environment Setup
 
-### Environment Setup
 * make sure no qmake-specific environment varaibles (like `QMAKEPATH` or `QMAKEFEATURES`) are set.
 * `$HOME/.config/Qt/Qmake.conf` should be empty.
 * On windows, make sure `sh.exe` is not in your path
@@ -38,7 +37,13 @@ Set your LLVM_INSTALL_DIR to the location where you have llvm installed
 $ export LLVM_INSTALL_DIR=/usr/llvm
 ```
 
-###  Create your build output directory
+Follow the build-env-specific setup instructions [specified here](https://wiki.qt.io/Get_the_Source#Building_Qt)
+
+
+
+# Build DLLs
+
+##  Create your build output directory
 
 ```
 $ mkdir ~/hvsrc/qt_lgpl/5.15.1/dev
@@ -49,18 +54,18 @@ $ ~/hvsrc/qt5/configure -developer-build -opensource -nomake examples -nomake te
 `-opensource` is required to ensure conformance to the LGPL license.
 `-developer-build` exports more symbols, to expose more classes/functions to testing.
 
-### Build
+## Build
 
-#### Linux
+### Linux
 
 `make -j$(nproc)` to make everything
 or build a specific module, eg. `make module-qtdeclarative`
 
-#### Windows
+### Windows
 `nmake` or `jom` or `mingw32-make`
 Building webkit on windows requires [more steps](http://trac.webkit.org/wiki/BuildingQtOnWindows)
 
-### Install
+## Install
 
 Note: Installation is only needed if you haven't used the configure options -developer-build or -prefix "%PWD%/qtbase". Otherwise, you can just use Qt from the build directory.
 
@@ -68,13 +73,13 @@ Note: Installation is only needed if you haven't used the configure options -dev
 $ make install
 ```
 
-### Clean
+## Clean
 
 ```
 $ git submodule foreach --recursive "git clean -dfx" && git clean -dfx
 ```
 
-### Getting Updates
+## Getting Updates
 
 ```
 $ git pull
