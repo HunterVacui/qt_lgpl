@@ -5,11 +5,14 @@ See [QT Features](https://www.qt.io/product/features#js-6-3) for the official li
 
 # Local Build Initial Setup
 
+Pick an official release version before starting. For this example we'll use **5.15.1**. See [this page](https://github.com/qt/qt5/releases) for the current release list
+
 ## Retrieve Source
 
 As per the [QT Open Source](https://www.qt.io/download-open-source) document, [This page](https://wiki.qt.io/Building_Qt_5_from_Git#Getting_the_source_code) contains the instructions for retrieving the QT source. [This Page](https://wiki.qt.io/Get_the_Source) contains supplementary instructions. Reproduced in part below:
 
 ```
+$ cd ~/hvsrc
 $ git clone https://code.qt.io/qt/qt5.git
 ```
 
@@ -18,7 +21,7 @@ $ git clone https://code.qt.io/qt/qt5.git
 qtwebengine is excluded by default because it's large, takes a long time to compile, and often fails to build.
 
 ```
-$ cd qt5
+$ cd ~/hvsrc/qt5
 $ git checkout 5.15.1
 $ perl init-repository --module-subset=default,-qtwebengine
 ```
@@ -38,9 +41,9 @@ $ export LLVM_INSTALL_DIR=/usr/llvm
 ###  Create your build output directory
 
 ```
-$ mkdir qt5-build
-$ cd qt5-build
-$ ../qt5/configure -developer-build -opensource -nomake examples -nomake tests -confirm-license
+$ mkdir ~/hvsrc/qt_lgpl/5.15.1
+$ cd ~/hvsrc/qt_lgpl/5.15.1
+$ ~/hvsrc/qt5/configure -developer-build -opensource -nomake examples -nomake tests -confirm-license
 ```
 
 `-opensource` is required to ensure conformance to the LGPL license.
