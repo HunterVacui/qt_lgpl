@@ -32,13 +32,7 @@ $ perl init-repository --module-subset=default,-qtwebengine
 * `$HOME/.config/Qt/Qmake.conf` should be empty.
 * On windows, make sure `sh.exe` is not in your path
 
-Set your LLVM_INSTALL_DIR to the location where you have llvm installed
-```
-$ export LLVM_INSTALL_DIR=/usr/llvm
-```
-
-Follow the build-env-specific setup instructions [specified here](https://wiki.qt.io/Get_the_Source#Building_Qt)
-
+Follow the build-environment-specific setup instructions [specified here](https://wiki.qt.io/Get_the_Source#Building_Qt)
 
 
 # Build DLLs
