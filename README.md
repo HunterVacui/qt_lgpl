@@ -5,7 +5,11 @@ See [QT Features](https://www.qt.io/product/features#js-6-3) for the official li
 
 # Local Build Initial Setup
 
-Pick an official release version before starting. For this example we'll use **5.15.1**. See [this page](https://github.com/qt/qt5/releases) for the current release list
+Pick a target platform and release version before starting.
+
+For this example we'll use:
+* Release **5.15.1**. (See [releases](https://github.com/qt/qt5/releases))
+* Platform **linux-g++** (See [mkspecs](https://github.com/qt/qtbase/tree/dev/mkspecs))
 
 ## Retrieve Source
 
@@ -26,41 +30,59 @@ $ git checkout 5.15.1
 $ perl init-repository --module-subset=default,-qtwebengine
 ```
 
-## Build DLLs
+## Environment Setup
 
-### Environment Setup
 * make sure no qmake-specific environment varaibles (like `QMAKEPATH` or `QMAKEFEATURES`) are set.
 * `$HOME/.config/Qt/Qmake.conf` should be empty.
 * On windows, make sure `sh.exe` is not in your path
 
-Set your LLVM_INSTALL_DIR to the location where you have llvm installed
-```
-$ export LLVM_INSTALL_DIR=/usr/llvm
-```
+Follow the build-environment-specific setup instructions [specified here](https://wiki.qt.io/Get_the_Source#Building_Qt)
 
-###  Create your build output directory
+
+# Build DLLs
 
 ```
-$ mkdir ~/hvsrc/qt_lgpl/5.15.1
-$ cd ~/hvsrc/qt_lgpl/5.15.1
-$ ~/hvsrc/qt5/configure -developer-build -opensource -nomake examples -nomake tests -confirm-license
+mkdir -p ~/hvsrc/qt_lgpl/build
+cd ~/hvsrc/qt_lgpl/build
+~/hvsrc/qt5/configure -opensource -nomake examples -nomake tests -confirm-license -xplatform linux-g++ -prefix ~/hvsrc/qt_lgpl/5.15.1/linux
+make -j$(nproc)
+make install
+```
+
+## Other targets
+
+[Android](https://doc.qt.io/qt-5/android-building.html):
+```
+$ apt install build-essential default-jre openjdk-8-jdk-headless android-sdk android-sdk-platform-23 libc6-i386
+$ ~/hvsrc/qt5/configure -opensource -nomake examples -nomake tests -confirm-license -xplatform android-clang --disable-rpath -android-ndk <path/to/sdk>/ndk-bundle/ -android-sdk <path/to/sdk> -no-warnings-are-errors -prefix /5.15.1/android/sdk_23
+```
+
+# Build QT local Dev Build
+
+##  Create your build output directory
+
+```
+$ mkdir -p ~/hvsrc/qt_lgpl/5.15.1/linux-g++
+$ cd ~/hvsrc/qt_lgpl/5.15.1/linux-g++
+$ ~/hvsrc/qt5/configure -opensource -nomake examples -nomake tests -confirm-license -xplatform linux-g++
 ```
 
 `-opensource` is required to ensure conformance to the LGPL license.
 `-developer-build` exports more symbols, to expose more classes/functions to testing.
+See more configure options [here](https://doc.qt.io/qt-5/configure-options.html)
 
-### Build
+## Build
 
-#### Linux
+### Linux
 
-`make -j$(nproc)` to make everything
+`make -j$(nproc)` to make everything (nproc outputs the number of processing units available on the machine)
 or build a specific module, eg. `make module-qtdeclarative`
 
-#### Windows
+### Windows
 `nmake` or `jom` or `mingw32-make`
 Building webkit on windows requires [more steps](http://trac.webkit.org/wiki/BuildingQtOnWindows)
 
-### Install
+## Install
 
 Note: Installation is only needed if you haven't used the configure options -developer-build or -prefix "%PWD%/qtbase". Otherwise, you can just use Qt from the build directory.
 
@@ -68,13 +90,13 @@ Note: Installation is only needed if you haven't used the configure options -dev
 $ make install
 ```
 
-### Clean
+## Clean
 
 ```
 $ git submodule foreach --recursive "git clean -dfx" && git clean -dfx
 ```
 
-### Getting Updates
+## Getting Updates
 
 ```
 $ git pull
