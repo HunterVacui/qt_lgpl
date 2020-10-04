@@ -41,21 +41,34 @@ Follow the build-environment-specific setup instructions [specified here](https:
 
 # Build DLLs
 
+## Linux
+
 ```
-mkdir -p ~/hvsrc/qt_lgpl/build
-cd ~/hvsrc/qt_lgpl/build
+mkdir -p ~/hvsrc/qt_lgpl/build && cd ~/hvsrc/qt_lgpl/build
 ~/hvsrc/qt5/configure -opensource -nomake examples -nomake tests -confirm-license -xplatform linux-g++ -prefix ~/hvsrc/qt_lgpl/5.15.1/linux
-make -j$(nproc)
-make install
+make -j$(nproc) && make install
 ```
 
-## Other targets
+## Windows
 
-[Android](https://doc.qt.io/qt-5/android-building.html):
+(note: these commands are not vetted yet. may require more local build setup. See https://askubuntu.com/questions/656219/building-a-windows-executable-in-qt-on-a-linux-system)
+```
+mkdir -p ~/hvsrc/qt_lgpl/build && cd ~/hvsrc/qt_lgpl/build
+~/hvsrc/qt5/configure -opensource -nomake examples -nomake tests -confirm-license -xplatform win32-g++ -prefix ~/hvsrc/qt_lgpl/5.15.1/win32
+make -j$(nproc) && make install
+```
+
+## Android
+
+[Android](https://doc.qt.io/qt-5/android-building.html) ([wiki](https://wiki.qt.io/Android) & [getting started](https://doc.qt.io/qt-5/android-getting-started.html)):
 ```
 $ apt install build-essential default-jre openjdk-8-jdk-headless android-sdk android-sdk-platform-23 libc6-i386
 $ ~/hvsrc/qt5/configure -opensource -nomake examples -nomake tests -confirm-license -xplatform android-clang --disable-rpath -android-ndk <path/to/sdk>/ndk-bundle/ -android-sdk <path/to/sdk> -no-warnings-are-errors -prefix /5.15.1/android/sdk_23
 ```
+
+## Raspberry Pi
+
+[doc](https://wiki.qt.io/RaspberryPi)
 
 # Build QT local Dev Build
 
