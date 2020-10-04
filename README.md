@@ -3,7 +3,7 @@ This repository contains headers and DLLs compiled from [unmodified QT source](h
 
 See [QT Features](https://www.qt.io/product/features#js-6-3) for the official list of QT modules and tools available under the LGPL license
 
-These files are also available from [QT directly](https://download.qt.io/archive/qt/). **WARNING:** If you use these installers provided by QT, you run the risk of including additional modules that are not available under the LGPL license. If you install from that source, make sure to delete any framework binaries not included in the [list of LGPL features](https://www.qt.io/product/features#js-6-3)
+These files are also available from [QT directly](https://download.qt.io/archive/qt/). **WARNING:** Even though the files available on the linked website are titled "open source" If you use these installers provided by QT, you run the risk of including additional modules that are not available under the LGPL license. If you install from that source, make sure to delete any framework binaries not included in the [list of LGPL features](https://www.qt.io/product/features#js-6-3)
 
 # Local Build Initial Setup
 
