@@ -1,0 +1,13 @@
+prefix=C:\\Qt\\Qt5.12.9\\5.12.9\\android_arm64_v8a
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 Bluetooth
+Description: Qt Bluetooth module
+Version: 5.12.9
+Libs: -L${libdir} -lQt5Bluetooth 
+Cflags: -DQT_BLUETOOTH_LIB -I${includedir}/QtBluetooth -I${includedir}
+Requires: Qt5Core
+
