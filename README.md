@@ -5,7 +5,11 @@ See [QT Features](https://www.qt.io/product/features#js-6-3) for the official li
 
 # Local Build Initial Setup
 
-Pick an official release version before starting. For this example we'll use **5.15.1**. See [this page](https://github.com/qt/qt5/releases) for the current release list
+Pick a target platform and release version before starting.
+
+For this example we'll use:
+* Release **5.15.1**. (See [releases](https://github.com/qt/qt5/releases))
+* Platform **linux-g++** (See [mkspecs](https://github.com/qt/qtbase/tree/dev/mkspecs))
 
 ## Retrieve Source
 
@@ -37,22 +41,41 @@ Follow the build-environment-specific setup instructions [specified here](https:
 
 # Build DLLs
 
+```
+mkdir -p ~/hvsrc/qt_lgpl/build
+cd ~/hvsrc/qt_lgpl/build
+~/hvsrc/qt5/configure -opensource -nomake examples -nomake tests -confirm-license -xplatform linux-g++ -prefix ~/hvsrc/qt_lgpl/5.15.1/linux
+make -j$(nproc)
+make install
+```
+
+## Other targets
+
+[Android](https://doc.qt.io/qt-5/android-building.html):
+```
+$ apt install build-essential default-jre openjdk-8-jdk-headless android-sdk android-sdk-platform-23 libc6-i386
+$ ~/hvsrc/qt5/configure -opensource -nomake examples -nomake tests -confirm-license -xplatform android-clang --disable-rpath -android-ndk <path/to/sdk>/ndk-bundle/ -android-sdk <path/to/sdk> -no-warnings-are-errors -prefix /5.15.1/android/sdk_23
+```
+
+# Build QT local Dev Build
+
 ##  Create your build output directory
 
 ```
-$ mkdir ~/hvsrc/qt_lgpl/5.15.1/dev
-$ cd ~/hvsrc/qt_lgpl/5.15.1/dev
-$ ~/hvsrc/qt5/configure -developer-build -opensource -nomake examples -nomake tests -confirm-license
+$ mkdir -p ~/hvsrc/qt_lgpl/5.15.1/linux-g++
+$ cd ~/hvsrc/qt_lgpl/5.15.1/linux-g++
+$ ~/hvsrc/qt5/configure -opensource -nomake examples -nomake tests -confirm-license -xplatform linux-g++
 ```
 
 `-opensource` is required to ensure conformance to the LGPL license.
 `-developer-build` exports more symbols, to expose more classes/functions to testing.
+See more configure options [here](https://doc.qt.io/qt-5/configure-options.html)
 
 ## Build
 
 ### Linux
 
-`make -j$(nproc)` to make everything
+`make -j$(nproc)` to make everything (nproc outputs the number of processing units available on the machine)
 or build a specific module, eg. `make module-qtdeclarative`
 
 ### Windows
