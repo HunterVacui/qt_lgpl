@@ -1,0 +1,14 @@
+prefix=/home/ubt18/Qt5.12.9/5.12.9/gcc_64
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 OpenGLExtensions
+Description: Qt OpenGLExtensions module
+Version: 5.12.9
+Libs: -L${libdir} -lQt5OpenGLExtensions 
+Libs.private: -L/home/qt/openssl-1.1.1d/lib -lQt5Gui -lQt5Core -lpthread -lGL   
+Cflags: -DQT_OPENGLEXTENSIONS_LIB -I${includedir}/QtOpenGLExtensions -I${includedir}
+Requires: Qt5Core Qt5Gui
+

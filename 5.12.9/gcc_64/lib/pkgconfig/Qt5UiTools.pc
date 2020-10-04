@@ -1,0 +1,14 @@
+prefix=/home/ubt18/Qt5.12.9/5.12.9/gcc_64
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 UiTools
+Description: Qt UiTools module
+Version: 5.12.9
+Libs: -L${libdir} -lQt5UiTools 
+Libs.private: -L/home/qt/openssl-1.1.1d/lib -lQt5Widgets -lQt5Gui -lQt5Core -lpthread -lQt5Widgets -lQt5Gui -lQt5Core -lGL   
+Cflags: -DQT_UITOOLS_LIB -I${includedir}/QtUiTools -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Widgets
+

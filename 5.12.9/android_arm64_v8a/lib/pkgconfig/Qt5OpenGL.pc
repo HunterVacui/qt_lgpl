@@ -1,0 +1,13 @@
+prefix=/home/ubt18/Qt5.12.9/5.12.9/android_arm64_v8a
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 OpenGL
+Description: Qt OpenGL module
+Version: 5.12.9
+Libs: -L${libdir} -lQt5OpenGL 
+Cflags: -DQT_OPENGL_LIB -I${includedir}/QtOpenGL -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Widgets
+
