@@ -1,5 +1,5 @@
 # qt_lgpl
-This repository contains headers and DLLs compiled from unmodified QT source, only for Framework libraries available under the LGPL v3 license
+This repository contains headers and DLLs compiled from [unmodified QT source](https://github.com/qt), only for Framework libraries available under the LGPL v3 license
 
 See [QT Features](https://www.qt.io/product/features#js-6-3) for the official list of QT modules and tools available under the LGPL license
 
