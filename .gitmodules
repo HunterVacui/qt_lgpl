@@ -1,3 +1,6 @@
 [submodule "qt5"]
 	path = qt5
 	url = https://github.com/qt/qt5
+[submodule "Qt_5.12.9"]
+	path = Qt_5.12.9
+	url = https://github.com/HunterVacui/Qt_5.12.9
