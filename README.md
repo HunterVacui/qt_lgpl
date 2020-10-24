@@ -5,7 +5,7 @@ See [QT Features](https://www.qt.io/product/features#js-6-3) for the official li
 
 These files are also available from [QT directly](https://download.qt.io/archive/qt/). **WARNING:** Even though the files available on the linked website are titled "open source" If you use these installers provided by QT, you run the risk of including additional modules that are not available under the LGPL license. If you install from that source, make sure to unselect any framework binaries not included in the [list of LGPL features](https://www.qt.io/product/features#js-6-3)
 
-(Note: The QT Design tools are listed as GPL, not LGPL. However "The Qt Company GPL Exception 1.0" allows for using the output of these design tools in closed source programs, provided that said program is not itself a QT GUI Design application)
+(Note: The QT Design tools are listed as GPL, not LGPL. However "The Qt Company GPL Exception 1.0" allows for using the output of these design tools in closed source programs, provided that said program is not itself a QT GUI Design application -- in any form)
 
 # Local Build Initial Setup
 
